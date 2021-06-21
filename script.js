@@ -39,7 +39,7 @@ initAccordion();
 function internalLinks() {
   const links = document.querySelectorAll('.menu a[href^="#"]');
 
-  function animateScroll(e) {
+  function scrollToElement(e) {
     e.preventDefault();
 
     const href = e.currentTarget.getAttribute("href");
@@ -48,6 +48,27 @@ function internalLinks() {
     selectedSection.scrollIntoView({ block: "start", behavior: "smooth" });
   }
 
-  links.forEach(link => link.addEventListener("click", animateScroll));
+  links.forEach(link => link.addEventListener("click", scrollToElement));
 }
 internalLinks();
+
+function initAnimateScroll() {
+  const sections = document.querySelectorAll(".section-scroll");
+  const halfWindow = window.innerHeight * 0.2;
+
+  if (sections.length) {
+    function animeScroll() {
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top - halfWindow;
+        const isSectionVisible = sectionTop - halfWindow < 0;
+
+        if (isSectionVisible) section.classList.add("active");
+        else section.classList.remove("active");
+      });
+    }
+    animeScroll();
+
+    window.addEventListener("scroll", animeScroll);
+  }
+}
+initAnimateScroll();

@@ -245,6 +245,17 @@ body {
   }
 }
 
+.section-scroll {
+  opacity: 0;
+  transform: translate(-30px, 0, 0);
+  transition: 0.3s;
+}
+
+.section-scroll.active {
+  opacity: 1;
+  transform: translate(0px, 0, 0);
+}
+
 @media (max-width: 700px) {
   body {
     grid-template-columns: 1fr;
