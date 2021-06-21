@@ -18,16 +18,20 @@ function initTabNav() {
 initTabNav();
 
 function initAccordion() {
+  const activeClassName = "active";
+
   const accordionList = document.querySelectorAll(".faq-lista dt");
-  accordionList[0].nextElementSibling.classList.add("active");
+  accordionList[0].nextElementSibling.classList.add(activeClassName);
 
-  function activeAccordion() {
-    this.classList.toggle("active");
-    this.nextElementSibling.classList.toggle("active");
+  if (accordionList.length) {
+    function activeAccordion() {
+      this.classList.toggle(activeClassName);
+      this.nextElementSibling.classList.toggle(activeClassName);
+    }
+
+    accordionList.forEach(el => {
+      el.addEventListener("click", activeAccordion);
+    });
   }
-
-  accordionList.forEach(el => {
-    el.addEventListener("click", activeAccordion);
-  });
 }
 initAccordion();
