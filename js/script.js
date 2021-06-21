@@ -1,13 +1,15 @@
+import { ACTIVE_CLASSNAME } from "./constants.js";
+
 function initTabNav() {
   const tabMenu = document.querySelectorAll(".animais-lista li");
   const tabContent = document.querySelectorAll(".animais-descricao section");
 
   if (tabMenu.length && tabContent.length) {
-    tabContent[0].classList.add("active");
+    tabContent[0].classList.add(ACTIVE_CLASSNAME);
 
     function activeTab(index) {
-      tabContent.forEach(el => el.classList.remove("active"));
-      tabContent[index].classList.add("active");
+      tabContent.forEach(el => el.classList.remove(ACTIVE_CLASSNAME));
+      tabContent[index].classList.add(ACTIVE_CLASSNAME);
     }
 
     tabMenu.forEach((el, index) =>
@@ -18,15 +20,13 @@ function initTabNav() {
 initTabNav();
 
 function initAccordion() {
-  const activeClassName = "active";
-
   const accordionList = document.querySelectorAll(".faq-lista dt");
-  accordionList[0].nextElementSibling.classList.add(activeClassName);
+  accordionList[0].nextElementSibling.classList.add(ACTIVE_CLASSNAME);
 
   if (accordionList.length) {
     function activeAccordion() {
-      this.classList.toggle(activeClassName);
-      this.nextElementSibling.classList.toggle(activeClassName);
+      this.classList.toggle(ACTIVE_CLASSNAME);
+      this.nextElementSibling.classList.toggle(ACTIVE_CLASSNAME);
     }
 
     accordionList.forEach(el => {
@@ -62,8 +62,8 @@ function initAnimateScroll() {
         const sectionTop = section.getBoundingClientRect().top - halfWindow;
         const isSectionVisible = sectionTop - halfWindow < 0;
 
-        if (isSectionVisible) section.classList.add("active");
-        else section.classList.remove("active");
+        if (isSectionVisible) section.classList.add(ACTIVE_CLASSNAME);
+        else section.classList.remove(ACTIVE_CLASSNAME);
       });
     }
     animeScroll();
