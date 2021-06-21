@@ -35,3 +35,19 @@ function initAccordion() {
   }
 }
 initAccordion();
+
+function internalLinks() {
+  const links = document.querySelectorAll('.menu a[href^="#"]');
+
+  function animateScroll(e) {
+    e.preventDefault();
+
+    const href = e.currentTarget.getAttribute("href");
+    const selectedSection = document.querySelector(href);
+
+    selectedSection.scrollIntoView({ block: "start", behavior: "smooth" });
+  }
+
+  links.forEach(link => link.addEventListener("click", animateScroll));
+}
+internalLinks();
