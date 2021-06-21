@@ -211,6 +211,36 @@ body {
   }
 }
 
+.faq-lista dd {
+  display: none;
+}
+
+.faq-lista dt::after {
+  content: "↴";
+  margin-left: 10px;
+}
+
+.faq-lista dt.active::after {
+  content: "⬏";
+  margin-left: 10px;
+}
+
+.faq-lista dd.active {
+  display: block;
+  animation: slideDown 0.5s forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 900px;
+  }
+}
+
 @media (max-width: 700px) {
   body {
     grid-template-columns: 1fr;
