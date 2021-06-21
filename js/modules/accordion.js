@@ -15,6 +15,5 @@ function initAccordion() {
     });
   }
 }
-initAccordion();
 
 export default initAccordion;

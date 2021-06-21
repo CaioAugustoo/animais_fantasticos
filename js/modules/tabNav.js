@@ -17,6 +17,5 @@ function initTabNav() {
     );
   }
 }
-initTabNav();
 
 export default initTabNav;

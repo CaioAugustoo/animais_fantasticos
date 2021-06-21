@@ -19,6 +19,5 @@ function initAnimateScroll() {
     window.addEventListener("scroll", animeScroll);
   }
 }
-initAnimateScroll();
 
 export default initAnimateScroll;

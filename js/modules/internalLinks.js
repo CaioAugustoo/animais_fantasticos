@@ -12,6 +12,5 @@ function internalLinks() {
 
   links.forEach(link => link.addEventListener("click", scrollToElement));
 }
-internalLinks();
 
 export default internalLinks;

@@ -24,6 +24,5 @@ function initModal() {
     modalContainer.addEventListener("click", outsideClick);
   }
 }
-initModal();
 
 export default initModal;
