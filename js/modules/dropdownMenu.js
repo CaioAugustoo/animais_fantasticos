@@ -10,8 +10,7 @@ function handleClick(e) {
   this.classList.toggle(ACTIVE_CLASSNAME);
 }
 
-subMenu.forEach(el =>
-  ["touchstart", "click"].forEach(event =>
-    el.addEventListener(event, handleClick)
-  )
-);
+subMenu.forEach(el => {
+  el.addEventListener("touchstart", handleClick);
+  el.addEventListener("click", handleClick);
+});
