@@ -4,7 +4,9 @@ function outsideClick(element, e, callback) {
   const html = document.documentElement;
 
   if (element.hasAttribute(DATA_OUTSIDE)) return;
-  html.addEventListener(e, handleOutsideClick);
+  setTimeout(() => {
+    html.addEventListener(e, handleOutsideClick);
+  });
   element.setAttribute(DATA_OUTSIDE, "");
 
   function handleOutsideClick(e) {
