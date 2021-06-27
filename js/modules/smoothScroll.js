@@ -3,7 +3,7 @@ export class SmoothScroll {
     this.internalLinks = document.querySelectorAll(links);
     this.options = options;
 
-    this.initApp();
+    this.init();
   }
 
   scrollToElement(e) {
@@ -23,7 +23,7 @@ export class SmoothScroll {
     this.addLinkEvents = this.addLinkEvents.bind(this);
   }
 
-  initApp() {
+  init() {
     this.bindEvents();
   }
 }

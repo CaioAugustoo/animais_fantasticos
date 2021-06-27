@@ -1,21 +1,26 @@
 import { ACTIVE_CLASSNAME } from "../constants.js";
 
-function initTabNav() {
-  const tabMenu = document.querySelectorAll(".animais-lista li");
-  const tabContent = document.querySelectorAll(".animais-descricao section");
+export class TabNav {
+  constructor(menu, content) {
+    this.menu = document.querySelectorAll(menu);
+    this.content = document.querySelectorAll(content);
 
-  if (tabMenu.length && tabContent.length) {
-    tabContent[0].classList.add(ACTIVE_CLASSNAME);
+    this.init();
+  }
 
-    function activeTab(index) {
-      tabContent.forEach(el => el.classList.remove(ACTIVE_CLASSNAME));
-      tabContent[index].classList.add(ACTIVE_CLASSNAME);
-    }
+  activeTab(index) {
+    this.content.forEach(el => el.classList.remove(ACTIVE_CLASSNAME));
+    this.content[index].classList.add(ACTIVE_CLASSNAME);
+  }
 
-    tabMenu.forEach((el, index) =>
-      el.addEventListener("click", () => activeTab(index))
+  addEvent() {
+    this.menu.forEach((el, index) =>
+      el.addEventListener("click", () => this.activeTab(index))
     );
   }
-}
 
-export default initTabNav;
+  init() {
+    this.activeTab(0);
+    this.addEvent();
+  }
+}
