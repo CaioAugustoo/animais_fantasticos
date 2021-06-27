@@ -1,19 +1,24 @@
 import { ACTIVE_CLASSNAME } from "../constants.js";
 
-function initAccordion() {
-  const accordionList = document.querySelectorAll(".faq-lista dt");
-  accordionList[0].nextElementSibling.classList.add(ACTIVE_CLASSNAME);
+export class Accordion {
+  constructor(selector) {
+    this.list = document.querySelectorAll(selector);
 
-  if (accordionList.length) {
-    function activeAccordion() {
-      this.classList.toggle(ACTIVE_CLASSNAME);
-      this.nextElementSibling.classList.toggle(ACTIVE_CLASSNAME);
-    }
+    this.init();
+  }
 
-    accordionList.forEach(el => {
-      el.addEventListener("click", activeAccordion);
+  activeAccordion(index) {
+    this.list[index].nextElementSibling.classList.toggle(ACTIVE_CLASSNAME);
+  }
+
+  addLinkEvents() {
+    this.list.forEach((el, index) => {
+      el.addEventListener("click", () => this.activeAccordion(index));
     });
   }
-}
 
-export default initAccordion;
+  init() {
+    this.addLinkEvents();
+    this.activeAccordion(0);
+  }
+}
