@@ -1,4 +1,5 @@
 import { ACTIVE_CLASSNAME } from "../constants.js";
+import { useDebounce } from "../utils/useDebounce.js";
 
 export class AnimateScroll {
   constructor(sections) {
@@ -34,7 +35,7 @@ export class AnimateScroll {
   }
 
   bindEvents() {
-    this.checkDistance = this.checkDistance.bind(this);
+    this.checkDistance = useDebounce(this.checkDistance.bind(this));
   }
 
   init() {
