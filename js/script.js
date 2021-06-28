@@ -5,9 +5,9 @@ import { Accordion } from "./modules/accordion.js";
 import { TabNav } from "./modules/tabNav.js";
 import { Modal } from "./modules/modal.js";
 import { Tooltip } from "./modules/tooltip.js";
+import { AnimateScroll } from "./modules/animateScroll.js";
 
-import initAnimateScroll from "./modules/animateScroll.js";
-import initDropdownMenu from "./modules/dropdownMenu.js";
+import { DropdownMenu } from "./modules/dropdownMenu.js";
 
 import initMenuMobile from "./modules/menuMobile.js";
 
@@ -22,7 +22,7 @@ new Modal(
 );
 
 new Tooltip("[data-tooltip]");
+new AnimateScroll(".section-scroll");
 
-initAnimateScroll();
-initDropdownMenu();
+new DropdownMenu("[data-dropdown]");
 initMenuMobile();
