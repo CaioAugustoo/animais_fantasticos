@@ -1,23 +1,50 @@
 import { ACTIVE_CLASSNAME } from "../constants.js";
 
-function initAnimateScroll() {
-  const sections = document.querySelectorAll(".section-scroll");
-  const halfWindow = window.innerHeight * 0.2;
+export class AnimateScroll {
+  constructor(sections) {
+    this.sections = document.querySelectorAll(sections);
+    this.halfWindow = window.innerHeight * 0.2;
 
-  if (sections.length) {
-    function animeScroll() {
-      sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top - halfWindow;
-        const isSectionVisible = sectionTop - halfWindow < 0;
+    this.init();
+  }
 
-        if (isSectionVisible) section.classList.add(ACTIVE_CLASSNAME);
-        else section.classList.remove(ACTIVE_CLASSNAME);
-      });
-    }
-    animeScroll();
+  getDistance() {
+    this.distance = [...this.sections].map(section => {
+      const offset = section.offsetTop;
 
-    window.addEventListener("scroll", animeScroll);
+      return {
+        element: section,
+        offset: Math.floor(offset - this.halfWindow),
+      };
+    });
+  }
+
+  checkDistance() {
+    this.distance.forEach(item => {
+      if (window.pageYOffset > item.offset) {
+        item.element.classList.add(ACTIVE_CLASSNAME);
+      } else {
+        item.element.classList.remove(ACTIVE_CLASSNAME);
+      }
+    });
+  }
+
+  animateEvents() {
+    window.addEventListener("scroll", this.checkDistance);
+  }
+
+  bindEvents() {
+    this.checkDistance = this.checkDistance.bind(this);
+  }
+
+  init() {
+    this.bindEvents();
+    this.getDistance();
+    this.animateEvents();
+    this.checkDistance();
+  }
+
+  stop() {
+    window.removeEventListener("scroll", this.checkDistance);
   }
 }
-
-export default initAnimateScroll;
