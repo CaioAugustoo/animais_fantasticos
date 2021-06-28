@@ -7,7 +7,7 @@ import { Modal } from "./modules/modal.js";
 import { Tooltip } from "./modules/tooltip.js";
 import { AnimateScroll } from "./modules/animateScroll.js";
 
-import initDropdownMenu from "./modules/dropdownMenu.js";
+import { DropdownMenu } from "./modules/dropdownMenu.js";
 
 import initMenuMobile from "./modules/menuMobile.js";
 
@@ -24,5 +24,5 @@ new Modal(
 new Tooltip("[data-tooltip]");
 new AnimateScroll(".section-scroll");
 
-initDropdownMenu();
+new DropdownMenu("[data-dropdown]");
 initMenuMobile();
