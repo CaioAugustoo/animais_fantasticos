@@ -1,22 +1,34 @@
 import { ACTIVE_CLASSNAME } from "../constants.js";
 import outsideClick from "./outsideClick.js";
 
-function initMenuMobile() {
-  const menuButton = document.querySelector('[data-menu="button"]');
-  const menuList = document.querySelector('[data-menu="list"]');
+export class MenuMobile {
+  constructor(menuButton, menuList) {
+    this.menuButton = document.querySelector(menuButton);
+    this.menuList = document.querySelector(menuList);
 
-  if (menuButton) {
-    function openMenu() {
-      menuList.classList.add(ACTIVE_CLASSNAME);
-      menuButton.classList.add(ACTIVE_CLASSNAME);
+    this.init();
+  }
 
-      outsideClick(menuList, "click", () => {
-        menuList.classList.remove(ACTIVE_CLASSNAME);
-        menuButton.classList.remove(ACTIVE_CLASSNAME);
-      });
-    }
+  open() {
+    this.menuList.classList.add(ACTIVE_CLASSNAME);
+    this.menuButton.classList.add(ACTIVE_CLASSNAME);
 
-    menuButton.addEventListener("click", openMenu);
+    outsideClick(this.menuList, "click", () => {
+      this.menuList.classList.remove(ACTIVE_CLASSNAME);
+      this.menuButton.classList.remove(ACTIVE_CLASSNAME);
+    });
+  }
+
+  addMenuEvents() {
+    this.menuButton.addEventListener("click", this.open);
+  }
+
+  bindEvents() {
+    this.open = this.open.bind(this);
+  }
+
+  init() {
+    this.bindEvents();
+    this.addMenuEvents();
   }
 }
-export default initMenuMobile;
