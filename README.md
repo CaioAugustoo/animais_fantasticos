@@ -8,7 +8,7 @@ Este projeto consiste em um site que lista animais fantásticos.
 Veja abaixo uma foto do projeto.
 [![Image from Gyazo](https://i.gyazo.com/be43aa34689d5351e4ddb00b3011bbdc.png)](https://gyazo.com/be43aa34689d5351e4ddb00b3011bbdc)
 
-Você pode conferir o resultado final em: 
+Você pode conferir o resultado final em: https://caioaugustoo.github.io/animais_fantasticos/
 
 
 ## 🎯 Objetivo do projeto
