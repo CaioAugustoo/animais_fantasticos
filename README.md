@@ -1,4 +1,4 @@
-# 🦴 Animais fantásticos
+# 🐻 Animais fantásticos
 Site fictício que apresenta conteúdo sobre animais.
 
 ## ℹ️ Sobre o projeto 
