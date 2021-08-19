@@ -9,7 +9,6 @@ export class Tooltip {
   }
 
   onMouseOver({ currentTarget }: Event | HTMLElement) {
-    console.log(currentTarget);
     this.createToolTipBox(currentTarget);
     currentTarget.addEventListener("mousemove", this.onMouseMove);
     currentTarget.addEventListener("mouseleave", this.onMouseLeave);
