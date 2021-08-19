@@ -19,6 +19,7 @@ Para a realização desse projeto foram utilizadas as seguintes tecnologias/ling
 - HTML
 - JavaScript
 - CSS
+- [TypeScript](https://www.typescriptlang.org/)
 - [Babel](https://babeljs.io/)
 - [Webpack](https://webpack.js.org/)
 
