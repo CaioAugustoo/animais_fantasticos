@@ -1,14 +1,16 @@
 import { ACTIVE_CLASSNAME } from "../constants.js";
 
 export class Accordion {
-  constructor(selector) {
+  private readonly list: NodeListOf<Element>;
+
+  constructor(selector: string) {
     this.list = document.querySelectorAll(selector);
 
     this.init();
   }
 
-  activeAccordion(index) {
-    this.list[index].nextElementSibling.classList.toggle(ACTIVE_CLASSNAME);
+  activeAccordion(index: number) {
+    this!.list[index].nextElementSibling!.classList.toggle(ACTIVE_CLASSNAME);
   }
 
   addLinkEvents() {

@@ -2,9 +2,12 @@ import { ACTIVE_CLASSNAME } from "../constants.js";
 import outsideClick from "./outsideClick.js";
 
 export class MenuMobile {
-  constructor(menuButton, menuList) {
-    this.menuButton = document.querySelector(menuButton);
-    this.menuList = document.querySelector(menuList);
+  private readonly menuButton: HTMLButtonElement;
+  private readonly menuList: HTMLElement;
+
+  constructor(menuButton: string, menuList: string) {
+    this.menuButton = document.querySelector(menuButton) as HTMLButtonElement;
+    this.menuList = document.querySelector(menuList) as HTMLElement;
 
     this.init();
   }

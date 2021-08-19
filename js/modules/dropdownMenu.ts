@@ -2,14 +2,16 @@ import { ACTIVE_CLASSNAME } from "../constants.js";
 import outsideClick from "./outsideClick.js";
 
 export class DropdownMenu {
-  constructor(menu) {
-    this.menu = document.querySelector(menu);
+  private readonly menu: HTMLLIElement;
+
+  constructor(menu: string) {
+    this.menu = document.querySelector(menu) as HTMLLIElement;
 
     this.init();
   }
 
-  handleClick(e) {
-    e.preventDefault();
+  handleClick(event: Event) {
+    event.preventDefault();
     this.menu.classList.add(ACTIVE_CLASSNAME);
 
     outsideClick(this.menu, "click", () =>
