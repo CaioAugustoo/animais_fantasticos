@@ -1,17 +1,23 @@
 export class Tooltip {
-  constructor(tooltips) {
+  private readonly tooltips: NodeListOf<Element>;
+  private tooltipBox: HTMLDivElement | null | undefined;
+
+  constructor(tooltips: string) {
     this.tooltips = document.querySelectorAll(tooltips);
 
     this.init();
   }
 
-  onMouseOver({ currentTarget }) {
+  onMouseOver({ currentTarget }: Event | HTMLElement) {
+    console.log(currentTarget);
     this.createToolTipBox(currentTarget);
     currentTarget.addEventListener("mousemove", this.onMouseMove);
     currentTarget.addEventListener("mouseleave", this.onMouseLeave);
   }
 
-  onMouseMove({ pageY, pageX }) {
+  onMouseMove({ pageY, pageX }: MouseEvent) {
+    if (!this.tooltipBox) return;
+
     if (pageX + 240 > window.innerWidth) {
       return (this.tooltipBox.style.left = `${pageX - 150}px`);
     }
@@ -20,10 +26,10 @@ export class Tooltip {
     this.tooltipBox.style.left = `${pageX + 20}px`;
   }
 
-  onMouseLeave({ currentTarget }) {
-    this.tooltipBox.remove();
-    currentTarget.removeEventListener("mouseleave", this.onMouseLeave);
-    currentTarget.removeEventListener("mousemove", this.onMouseMove);
+  onMouseLeave({ currentTarget }: any) {
+    if (this.tooltipBox) this.tooltipBox.remove();
+    currentTarget!.removeEventListener("mouseleave", this.onMouseLeave);
+    currentTarget!.removeEventListener("mousemove", this.onMouseMove);
   }
 
   bindEvents() {
@@ -32,11 +38,11 @@ export class Tooltip {
     this.onMouseOver = this.onMouseOver.bind(this);
   }
 
-  createToolTipBox(element) {
+  createToolTipBox(element: HTMLDivElement) {
     const tooltipBox = document.createElement("div");
     const text = element.getAttribute("aria-label");
     tooltipBox.classList.add("tooltip");
-    tooltipBox.innerText = text;
+    tooltipBox.innerText = text!;
     document.body.appendChild(tooltipBox);
 
     this.tooltipBox = tooltipBox;
